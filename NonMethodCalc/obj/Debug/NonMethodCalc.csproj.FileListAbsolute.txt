@@ -1,0 +1,7 @@
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\bin\Debug\NonMethodCalc.exe.config
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\bin\Debug\NonMethodCalc.exe
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\bin\Debug\NonMethodCalc.pdb
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\obj\Debug\NonMethodCalc.csprojAssemblyReference.cache
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\obj\Debug\NonMethodCalc.csproj.CoreCompileInputs.cache
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\obj\Debug\NonMethodCalc.exe
+C:\Users\Jez Horton\source\repos\Week3\Day1\Calculator\NonMethodCalc\obj\Debug\NonMethodCalc.pdb
