@@ -2,21 +2,25 @@
 
 namespace Calculator
 {
-    class Program : BMI
+    class Program
     {
         string entered;
         bool used;
         double tempnum1, tempnum2, carriednum;
+        BMI b = new BMI();
+
         public static void Main()
         {
+            //Creating the objects of the classes
             Program c = new Program();
-            BMI b = new BMI();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("==============\n  Calculator \n============== ");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Please select what calculation you would like to do." +
                 "\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.BMI Calculator");
             c.switchStatement();
             Console.WriteLine(c.used);
-            //if (c.used == false)
         }
         void switchStatement()
         {
@@ -44,7 +48,7 @@ namespace Calculator
                     Loop();
                     break;
                 case "5":
-                    Bmi();
+                    b.Bmi();
                     break;
                 default:
                     Console.WriteLine("Unexpected value, try again:  " + entered);
@@ -55,7 +59,6 @@ namespace Calculator
         void Input()
         {
             string word = "empty";
-            string type = "type";
             if (entered == "1"){word = "Addition";}
             else if (entered == "2"){word = "Subtraction";}
             else if (entered == "3") { word = "Multiplication"; }
@@ -71,6 +74,7 @@ namespace Calculator
         }
         void Add()
         {
+            Console.Read();
             double funAdd(double one, double two)
             {
                 return one + two;
@@ -144,7 +148,7 @@ namespace Calculator
             weight = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please enter your height in centimeters");
             height = Convert.ToDouble(Console.ReadLine());
-            double BMI = weight / Math.Pow(height / 100.0, 2); //Not sure if I was allowed to use math. but it just saves me doing another height / 100
+            double BMI = weight / Math.Pow(height / 100.0, 2); //Using Math. to enable me to use powers
             if (gender == "1" | gender == "male")
             {
                 if (BMI < 18) bmiStatus = "Underweight";
