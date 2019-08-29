@@ -7,23 +7,31 @@ namespace Calculator
         string entered;
         bool used;
         double tempnum1, tempnum2, carriednum;
-        BMI b = new BMI();
-
         public static void Main()
         {
             //Creating the objects of the classes
             Program c = new Program();
+            BMI b = new BMI();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("==============\n  Calculator \n============== ");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Please select what calculation you would like to do." +
-                "\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division\n5.BMI Calculator");
-            c.switchStatement();
+            Console.WriteLine("Please select what calculator you want to use" + "\n1. Normal Calculator\n2. BMI Calculator");
+            string yas = Console.ReadLine();
+            if (yas == "1")
+            {
+                c.switchStatement();
+            }
+            else if (yas == "2")
+            {
+                b.Bmi();
+            }
             Console.WriteLine(c.used);
         }
         void switchStatement()
         {
+            Console.WriteLine("Please select what calculation you would like to do." +
+            "\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division");
             entered = Console.ReadLine();
             switch (entered)
             {
@@ -47,9 +55,6 @@ namespace Calculator
                     Divide();
                     Loop();
                     break;
-                case "5":
-                    b.Bmi();
-                    break;
                 default:
                     Console.WriteLine("Unexpected value, try again:  " + entered);
                     switchStatement();
@@ -63,18 +68,39 @@ namespace Calculator
             else if (entered == "2"){word = "Subtraction";}
             else if (entered == "3") { word = "Multiplication"; }
             else if (entered == "4") { word = "Division"; }
+            
             if (used == false)
             {
                 Console.WriteLine("Method:" + word + "\nPlease enter the first value.");
-                tempnum1 = Convert.ToDouble(Console.ReadLine());
+                try
+                {
+                    tempnum1 = Convert.ToDouble(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("This isn't an accepted value");
+                }
             }
-            if (used == true) { Console.WriteLine("Method: " + word); }
+            try
+            {
+                if (used == true) { Console.WriteLine("Method: " + word); }
+            }
+            catch
+            {
+                Console.WriteLine("This isn't an accepted value");
+            }
             Console.WriteLine("Please enter the second value.");
-            tempnum2 = Convert.ToDouble(Console.ReadLine());
+            try
+            {
+                tempnum2 = Convert.ToDouble(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("This isn't an accepted value");
+            }
         }
         void Add()
         {
-            Console.Read();
             double funAdd(double one, double two)
             {
                 return one + two;
