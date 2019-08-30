@@ -17,16 +17,20 @@ namespace Calculator
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Please select what calculator you want to use" + "\n1. Normal Calculator\n2. BMI Calculator");
+        START:;
             string yas = Console.ReadLine();
-            if (yas == "1")
+            switch (yas)
             {
-                c.switchStatement();
+                case "1":
+                    c.switchStatement();
+                    break;
+                case "2":
+                    b.Bmi();
+                    break;
+                default:
+                    Console.WriteLine("Argument out of range, please retry");
+                    goto START;
             }
-            else if (yas == "2")
-            {
-                b.Bmi();
-            }
-            Console.WriteLine(c.used);
         }
         void switchStatement()
         {
@@ -70,15 +74,25 @@ namespace Calculator
             else if (entered == "2"){word = "Subtraction";}
             else if (entered == "3") { word = "Multiplication"; }
             else if (entered == "4") { word = "Division"; }
-            value = Double.MinValue.ToString();
+             
             if (used == false)
             {
                 Console.WriteLine("Method:" + word + "\nPlease enter the first value.");
-                tempnum1 = Convert.ToDouble(Console.ReadLine());
+            CONTINUE:;
+                try
+                {
+                    tempnum1 = Convert.ToDouble(Console.ReadLine());
+                }
+                catch (FormatException) { Console.WriteLine("Character not accepted, please try again"); goto CONTINUE; }
             }
             if (used == true) { Console.WriteLine("Method: " + word); }
             Console.WriteLine("Please enter the second value.");
-            tempnum2 = Convert.ToDouble(Console.ReadLine());
+            CONTINUE2:;
+            try
+            {
+                tempnum2 = Convert.ToDouble(Console.ReadLine());
+            }
+            catch (FormatException) { Console.WriteLine("Character not accepted, please try again"); goto CONTINUE2; }
         }
         void Add()
         {
@@ -136,6 +150,10 @@ namespace Calculator
                     Console.Clear();
                     Main();
                     break;
+                default:
+                    Console.WriteLine("Argument out of range, please retry");
+                    Loop();
+                    break;
             }
         }
     }
@@ -152,9 +170,13 @@ namespace Calculator
             Console.WriteLine("Please enter your gender\n1.Male\n2.Female");
             gender = Console.ReadLine();
             Console.WriteLine("Please enter your weight in kg");
-            weight = Convert.ToInt32(Console.ReadLine());
+        weight:;
+            try { weight = Convert.ToInt32(Console.ReadLine()); }
+            catch(FormatException) { Console.WriteLine("Argument out of range, please re-enter an accepted number"); goto weight;  }
             Console.WriteLine("Please enter your height in centimeters");
-            height = Convert.ToDouble(Console.ReadLine());
+        height:;
+            try { height = Convert.ToDouble(Console.ReadLine()); }
+            catch(FormatException) { Console.WriteLine("Argument out of range, please re-enter an accepted number"); goto height; }
             double BMI = weight / Math.Pow(height / 100.0, 2); //Using Math. to enable me to use powers
             if (gender == "1" | gender == "male")
             {
@@ -169,7 +191,9 @@ namespace Calculator
                 else { bmiStatus = "Overweight"; }
             }
             Console.WriteLine("BMI:  " + BMI + "\nStatus:  " + bmiStatus + "\n1. Enter another BMI\n2. Go back to the calculator");
-            entered = Console.ReadLine();
+        entered:;
+            try { entered = Console.ReadLine(); }
+            catch (FormatException) { Console.WriteLine("Arguement out of range, please re-enter an accepted number"); goto entered; }
             if (entered == "1") Bmi();
             else if (entered == "2") Console.Clear(); Program.Main();
         }
