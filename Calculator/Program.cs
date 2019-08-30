@@ -63,41 +63,22 @@ namespace Calculator
         }
         void Input()
         {
+            string value;
+            double number;
             string word = "empty";
             if (entered == "1"){word = "Addition";}
             else if (entered == "2"){word = "Subtraction";}
             else if (entered == "3") { word = "Multiplication"; }
             else if (entered == "4") { word = "Division"; }
-            
+            value = Double.MinValue.ToString();
             if (used == false)
             {
                 Console.WriteLine("Method:" + word + "\nPlease enter the first value.");
-                try
-                {
-                    tempnum1 = Convert.ToDouble(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("This isn't an accepted value");
-                }
+                tempnum1 = Convert.ToDouble(Console.ReadLine());
             }
-            try
-            {
-                if (used == true) { Console.WriteLine("Method: " + word); }
-            }
-            catch
-            {
-                Console.WriteLine("This isn't an accepted value");
-            }
+            if (used == true) { Console.WriteLine("Method: " + word); }
             Console.WriteLine("Please enter the second value.");
-            try
-            {
-                tempnum2 = Convert.ToDouble(Console.ReadLine());
-            }
-            catch
-            {
-                Console.WriteLine("This isn't an accepted value");
-            }
+            tempnum2 = Convert.ToDouble(Console.ReadLine());
         }
         void Add()
         {
